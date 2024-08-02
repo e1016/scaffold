@@ -1,0 +1,71 @@
+html, body {
+  height: 100%;
+}
+* {
+  font-family: 'Inter Variable', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.ay-btn {
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ay-btn > span {
+  margin: 0 0.4rem;
+  padding: 0.4rem 0;
+}
+
+.ay-loading.container {
+  height: 4px;
+  width: 100%;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+@keyframes loading {
+  0% { left: -100%; right: 100%; }
+  50% { left: 100%; right: -100%; }
+  100% { left: 100%; right: -100%; }
+}
+
+.ay-loading.bar {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  animation: loading 1s ease infinite;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes zoomIn {
+  0% { transform: scale(0.75); }
+  100% { transform: scale(1); }
+}
+
+.ay-modal-bg {
+  animation: fadeIn 0.3s ease;
+}
+
+.ay-modal-container {
+  animation: zoomIn 0.3s ease;
+}
+
+button:hover { opacity: 0.9; }
+button:active { opacity: 0.8; }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
