@@ -1,4 +1,5 @@
 
+import path from 'path'
 import { defineConfig } from 'vite'
 import laravel from 'laravel-vite-plugin'
 import tsconfigPaths from 'vite-tsconfig-paths'

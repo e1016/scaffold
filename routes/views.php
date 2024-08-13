@@ -5,10 +5,10 @@ use App\Http\Controllers\{
   InertiaViewController
 };
 
+Route::get('/login', [InertiaViewController::class, 'login'])->name('login');
+
 Route::group(['prefix' => 'dashboard'], function () {
   
-  Route::get('/nominas', [InertiaViewController::class, 'nominas'])->name('nominas');
-  Route::get('/reportes', [InertiaViewController::class, 'reportes'])->name('reportes');
-  Route::get('/actividad', [InertiaViewController::class, 'actividad'])->name('actividad');
+  Route::get('/inbox', [InertiaViewController::class, 'inbox'])->name('inbox');
 
 })->name('dashboard');

@@ -1,30 +1,25 @@
+import * as React from "react"
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  className?: string;
-  left?: React.ReactNode;
-  right?: React.ReactNode;
-  onRightClick?: () => void;
-  password?: boolean;
-}
+import { cn } from "@/lib/utils"
 
-export default function Input({ className = '', password, left, right, onRightClick, ...props }: InputProps) {
-  const Left = left, Right = right
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-  return (
-    <div className={
-      className +
-      ' relative'
-    }>
-      {left ? <Left className="w-4 absolute z-10 left-2 top-0.5"/> : null}
-      <input type={password ? 'password': 'text'} className={
-        (left ? 'pl-7' : 'pl-2') +
-        ' w-full border-gray-400 border-solid border-2 rounded-md pt-0.5 pb-0.5 text-sm outline-none focus:border-indigo-500'
-      } {...props} />
-      {
-        right ? <span className={onRightClick ? 'cursor-pointer' : ''} onClick={onRightClick}>
-          <Right className="w-4 absolute z-10 right-2 top-0.5" />
-        </span> : null
-      }
-    </div>
-  )
-}
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, ...props }, ref) => {
+    return (
+      <input
+        type={type}
+        className={cn(
+          "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+Input.displayName = "Input"
+
+export { Input }
